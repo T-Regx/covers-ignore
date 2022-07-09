@@ -1,6 +1,7 @@
 <?php
 namespace TRegx\CoversIgnore\FileSystem;
 
+use Generator;
 use IteratorAggregate;
 
 class Directory implements IteratorAggregate
@@ -10,9 +11,9 @@ class Directory implements IteratorAggregate
     }
 
     /**
-     * @return iterable<File>
+     * @return Generator<File>|iterable<File>
      */
-    public function getIterator(): iterable
+    public function getIterator(): Generator
     {
         foreach ($this->recursiveFiles() as [$filename]) {
             yield new File($filename);
